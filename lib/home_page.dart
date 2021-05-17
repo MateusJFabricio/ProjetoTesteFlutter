@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:projetomeu/app_controller.dart';
 
 class HomePage extends StatefulWidget
 {
@@ -17,20 +18,13 @@ class HomePageState extends State<HomePage>
   Widget build(BuildContext context) {
 
     return Scaffold(
-      appBar: AppBar(),
-      body: Container(
-        height: 100,
-        width: 100,
-        color: Colors.red,
-        child: Align(
-          alignment: Alignment.bottomRight,
-          child: Container(
-            height: 50,
-            width: 50,
-            color: Colors.green,
-          ),
-        ),
+      appBar: AppBar(
+        title: Center(child: Text('Tela Home')),
+        actions: [CustomSwitcher()],
       ),
+      body: Center(
+        child: CustomSwitcher()
+        ),
       floatingActionButton:
         FloatingActionButton(
           onPressed: onTap,
@@ -46,4 +40,25 @@ class HomePageState extends State<HomePage>
     });
   }
 
+}
+
+class CustomSwitcher extends StatelessWidget {
+  const CustomSwitcher({Key key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+        children: [
+          Text('Tema escuro'),
+          Switch(
+            value: AppController.instance.isDarkTheme,
+            onChanged: switchOnChange,
+          )]);
+  }
+
+  switchOnChange(value)
+  {
+    AppController.instance.changeTheme();
+
+  }
 }
