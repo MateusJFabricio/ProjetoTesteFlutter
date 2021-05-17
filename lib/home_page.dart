@@ -18,14 +18,17 @@ class HomePageState extends State<HomePage>
 
     return Scaffold(
       appBar: AppBar(),
-      body: Center(
-        child: GestureDetector(
-          child: Text('Contador: ' + counter.toString(),
-              style: new TextStyle(
-              fontSize: 40
-              ),
+      body: Container(
+        height: 100,
+        width: 100,
+        color: Colors.red,
+        child: Align(
+          alignment: Alignment.bottomRight,
+          child: Container(
+            height: 50,
+            width: 50,
+            color: Colors.green,
           ),
-          onTap: onTap,
         ),
       ),
       floatingActionButton:
